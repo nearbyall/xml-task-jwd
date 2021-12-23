@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.epamtc.com/devices"
+			targetNamespace="http://www.epamtc.com/devices"
+			elementFormDefault="qualified">
+	
+	<xsd:element name="devices">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="device" type="tns:Device" minOccurs="1" maxOccurs="100"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:complexType name="Device">
+	
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:string"/>
+			<xsd:element name="price" type="xsd:positiveInteger"/>
+			<xsd:element name="origin" type="xsd:string"/>
+			<xsd:element name="type" type="tns:Type"/>
+			<xsd:element name="device_add_ts" type="xsd:date"/>
+		</xsd:sequence>
+		
+		<xsd:attribute name="id" type="xsd:long" use="required"/>
+		
+		<xsd:attribute name="critical" use="optional" default="yes">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:enumeration value="yes"></xsd:enumeration>
+					<xsd:enumeration value="no"></xsd:enumeration>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		
+	</xsd:complexType>
+	
+	<xsd:complexType name="Type">
+		<xsd:sequence>
+		<xsd:element name="peripherality" type="xsd:string"/>
+		<xsd:element name="group" type="xsd:string"/>
+		<xsd:element name="consumption" type="xsd:positiveInteger"/>	
+		<xsd:element name="port" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+</xsd:schema>

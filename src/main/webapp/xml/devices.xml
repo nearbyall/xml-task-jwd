@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<devices xmlns:xsi="http://www.w3.org/2001/"
+		 xmlns="http://www.epamtc.com/devices">
+		
+	<device id="1" critical="yes">
+		<name>Nvidia geforce gt1030</name>
+		<price>150</price>
+		<origin>Chine</origin>
+		<type>
+			<peripherality>yes</peripherality>
+			<group>videocard</group>
+			<consumption>100</consumption>
+			<port>usb</port>
+		</type>
+		<device_add_ts>1964-07-24</device_add_ts>
+	</device>
+	
+	<device id="2" critical="yes">
+		<name>Nvidia geforce gt1030</name>
+		<price>150</price>
+		<origin>Chine</origin>
+		<type>
+			<peripherality>yes</peripherality>
+			<group>videocard</group>
+			<consumption>100</consumption>
+			<port>usb</port>
+		</type>
+		<device_add_ts>1964-07-24</device_add_ts>
+	</device>
+	
+	<device id="3" critical="yes">
+		<name>Nvidia geforce gt1030</name>
+		<price>150</price>
+		<origin>Chine</origin>
+		<type>
+			<peripherality>yes</peripherality>
+			<group>videocard</group>
+			<consumption>100</consumption>
+			<port>usb</port>
+		</type>
+		<device_add_ts>1964-07-24</device_add_ts>
+	</device>
+	
+	<device id="4" critical="yes">
+		<name>Nvidia geforce gt1030</name>
+		<price>150</price>
+		<origin>Chine</origin>
+		<type>
+			<peripherality>yes</peripherality>
+			<group>videocard</group>
+			<consumption>100</consumption>
+			<port>usb</port>
+		</type>
+		<device_add_ts>1964-07-24</device_add_ts>
+	</device>
+	
+	<device id="5" critical="yes">
+		<name>Nvidia geforce gt1030</name>
+		<price>150</price>
+		<origin>Chine</origin>
+		<type>
+			<peripherality>yes</peripherality>
+			<group>videocard</group>
+			<consumption>100</consumption>
+			<port>usb</port>
+		</type>
+		<device_add_ts>1964-07-24</device_add_ts>
+	</device>
+	
+	<device id="6" critical="yes">
+		<name>Nvidia geforce gt1030</name>
+		<price>150</price>
+		<origin>Chine</origin>
+		<type>
+			<peripherality>yes</peripherality>
+			<group>videocard</group>
+			<consumption>100</consumption>
+			<port>usb</port>
+		</type>
+		<device_add_ts>1964-07-24</device_add_ts>
+	</device>
+	
+	<device id="7" critical="yes">
+		<name>Nvidia geforce gt1030</name>
+		<price>150</price>
+		<origin>Chine</origin>
+		<type>
+			<peripherality>yes</peripherality>
+			<group>videocard</group>
+			<consumption>100</consumption>
+			<port>usb</port>
+		</type>
+		<device_add_ts>1964-07-24</device_add_ts>
+	</device>
+	
+	<device id="8" critical="yes">
+		<name>Nvidia geforce gt1030</name>
+		<price>150</price>
+		<origin>Chine</origin>
+		<type>
+			<peripherality>yes</peripherality>
+			<group>videocard</group>
+			<consumption>100</consumption>
+			<port>usb</port>
+		</type>
+		<device_add_ts>1964-07-24</device_add_ts>
+	</device>
+	
+	<device id="9" critical="yes">
+		<name>Nvidia geforce gt1030</name>
+		<price>150</price>
+		<origin>Chine</origin>
+		<type>
+			<peripherality>yes</peripherality>
+			<group>videocard</group>
+			<consumption>100</consumption>
+			<port>usb</port>
+		</type>
+		<device_add_ts>1964-07-24</device_add_ts>
+	</device>
+	
+	<device id="10" critical="yes">
+		<name>Nvidia geforce gt1030</name>
+		<price>150</price>
+		<origin>Chine</origin>
+		<type>
+			<peripherality>yes</peripherality>
+			<group>videocard</group>
+			<consumption>100</consumption>
+			<port>usb</port>
+		</type>
+		<device_add_ts>1964-07-24</device_add_ts>
+	</device>
+	
+	<device id="11" critical="yes">
+		<name>Nvidia geforce gt1030</name>
+		<price>150</price>
+		<origin>Chine</origin>
+		<type>
+			<peripherality>yes</peripherality>
+			<group>videocard</group>
+			<consumption>100</consumption>
+			<port>usb</port>
+		</type>
+		<device_add_ts>1964-07-24</device_add_ts>
+	</device>
+	
+	<device id="12" critical="yes">
+		<name>Nvidia geforce gt1030</name>
+		<price>150</price>
+		<origin>Chine</origin>
+		<type>
+			<peripherality>yes</peripherality>
+			<group>videocard</group>
+			<consumption>100</consumption>
+			<port>usb</port>
+		</type>
+		<device_add_ts>1964-07-24</device_add_ts>
+	</device>
+	
+	<device id="13" critical="yes">
+		<name>Nvidia geforce gt1030</name>
+		<price>150</price>
+		<origin>Chine</origin>
+		<type>
+			<peripherality>yes</peripherality>
+			<group>videocard</group>
+			<consumption>100</consumption>
+			<port>usb</port>
+		</type>
+		<device_add_ts>1964-07-24</device_add_ts>
+	</device>
+	
+	<device id="14" critical="yes">
+		<name>Nvidia geforce gt1030</name>
+		<price>150</price>
+		<origin>Chine</origin>
+		<type>
+			<peripherality>yes</peripherality>
+			<group>videocard</group>
+			<consumption>100</consumption>
+			<port>usb</port>
+		</type>
+		<device_add_ts>1964-07-24</device_add_ts>
+	</device>
+	
+	<device id="15" critical="yes">
+		<name>Nvidia geforce gt1030</name>
+		<price>150</price>
+		<origin>Chine</origin>
+		<type>
+			<peripherality>yes</peripherality>
+			<group>videocard</group>
+			<consumption>100</consumption>
+			<port>usb</port>
+		</type>
+		<device_add_ts>1964-07-24</device_add_ts>
+	</device>
+	
+	<device id="16" critical="yes">
+		<name>Nvidia geforce gt1030</name>
+		<price>150</price>
+		<origin>Chine</origin>
+		<type>
+			<peripherality>yes</peripherality>
+			<group>videocard</group>
+			<consumption>100</consumption>
+			<port>usb</port>
+		</type>
+		<device_add_ts>1964-07-24</device_add_ts>
+	</device>
+
+</devices>
