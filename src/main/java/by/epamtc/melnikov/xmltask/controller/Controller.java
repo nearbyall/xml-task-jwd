@@ -3,7 +3,6 @@ package by.epamtc.melnikov.xmltask.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -15,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -28,6 +28,8 @@ public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	private static final String UPLOAD_DIRECTORY = "upload";
+	private static final String XSD_PATH = "xsd/devices.xsd";
+	private static final String MESSAGE_PATH = "/jsp/message.jsp";
 	private static final int THRESHOLD_SIZE 	= 1024 * 1024 * 3; 	// 3MB
 	private static final int MAX_FILE_SIZE 		= 1024 * 1024 * 40; // 40MB
 	private static final int MAX_REQUEST_SIZE 	= 1024 * 1024 * 50; // 50MB
@@ -40,14 +42,12 @@ public class Controller extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String parserType = "";
-		if (!ServletFileUpload.isMultipartContent(request)) {
-			PrintWriter writer = response.getWriter();
-			writer.println("Request does not contain upload data");
-			writer.flush();
-		}
+		List<FileItem> formItems;
+		String filePath = StringUtils.EMPTY;
+		String parserType = StringUtils.EMPTY;
+		String uploadPath = request.getServletContext().getRealPath("./") + UPLOAD_DIRECTORY;
+		File uploadDirectory = new File(uploadPath);
 		
-		// configures upload settings
 		DiskFileItemFactory factory = new DiskFileItemFactory();
 		factory.setSizeThreshold(THRESHOLD_SIZE);
 		factory.setRepository(new File(System.getProperty("java.io.tmpdir")));
@@ -56,57 +56,49 @@ public class Controller extends HttpServlet {
 		upload.setFileSizeMax(MAX_FILE_SIZE);
 		upload.setSizeMax(MAX_REQUEST_SIZE);
 		
-		// constructs the directory path to store upload file
-		String uploadPath = getServletContext().getRealPath("")
-			+ File.separator + UPLOAD_DIRECTORY;
-		// creates the directory if it does not exist
-		File uploadDir = new File(uploadPath);
-		if (!uploadDir.exists()) {
-			uploadDir.mkdir();
+		if (!ServletFileUpload.isMultipartContent(request)) {
+			PrintWriter writer = response.getWriter();
+			writer.println("Request does not contain upload data");
+			writer.flush();
 		}
 		
-		String fileName = null;
-		String filePath = null;
+		if (!uploadDirectory.exists()) {
+			uploadDirectory.mkdir();
+		}
 		
 		try {
-			// parses the request's content to extract file data
-			List<?> formItems = upload.parseRequest(request);
-			Iterator<?> iter = formItems.iterator();
-			
-			// iterates over form's fields
-			while (iter.hasNext()) {
-				FileItem item = (FileItem) iter.next();
-				if (item.getFieldName().equals("parsertype")) {
-					parserType = item.toString();
-				};
-				// processes only fields that are not form fields
-				if (item.getFieldName().equals("file")) {
-					fileName = new File(item.getName()).getName();
+			formItems = upload.parseRequest(request);
+			for (FileItem fileItem : formItems) {
+				if (fileItem.getFieldName().equals(parserType)) {
+					parserType = fileItem.getString();
+				}
+				if (fileItem.getFieldName().equals("file")) {
+					String fileName = new File(fileItem.getName()).getName();
 					filePath = uploadPath + File.separator + fileName;
 					File storeFile = new File(filePath);
-					
-					// saves the file on disk
-					item.write(storeFile);
+					fileItem.write(storeFile);
 				}
 			}
 			request.setAttribute("message", "Upload has been done successfully!");
-		} catch (Exception ex) {
-			logger.error("File uploading error", ex);
-			request.setAttribute("message", "There was an error: " + ex.getMessage());
+		} catch (Exception e) {
+			logger.error("File uploading error", e);
+			request.setAttribute("message", "There was an error: " + e.getMessage());
 		}
+		
+		System.out.println(parserType);
 		
 		XSDValidator validator = XSDValidator.getInstance();
 		
 		if (!validator.validate(filePath, getServletContext().getRealPath("")
-				+ File.separator + "xsd/devices.xsd")) {
+				+ File.separator + XSD_PATH)) {
 			request.setAttribute("result", "xml is not valid");
-			getServletContext().getRequestDispatcher("/jsp/message.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher(MESSAGE_PATH).forward(request, response);
 		} else {
-			AbstractDevicesBuilder devicesBuilder = DevicesBuilderFactory.createDevicesBuilder(parserType);
+			AbstractDevicesBuilder devicesBuilder = DevicesBuilderFactory.createDevicesBuilder("sax");
 			devicesBuilder.buildSetDevices(filePath);
 			Set<Device> devices = devicesBuilder.getDevices();
 			request.setAttribute("result",  buildHTMLDevicesTable(devices));
-			getServletContext().getRequestDispatcher("/jsp/message.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher(MESSAGE_PATH).forward(request, response);
 		}
 		
 	}

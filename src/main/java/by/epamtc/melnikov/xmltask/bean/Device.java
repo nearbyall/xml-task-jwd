@@ -1,7 +1,11 @@
 package by.epamtc.melnikov.xmltask.bean;
 
-public class Device {
+import java.io.Serializable;
 
+public class Device implements Serializable {
+
+	private static final long serialVersionUID = -7159067630631214760L;
+	
 	private String critical;
 	private String name;
 	private String origin;
